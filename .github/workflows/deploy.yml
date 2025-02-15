@@ -57,15 +57,16 @@ jobs:
       - name: Deploy to Azure App Service
         run: |
           az webapp config container set \
-            --name ${{ secrets.AZURE_WEBAPP_NAME }} \
-            --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
-            --docker-custom-image-name ${{ secrets.AZURE_CONTAINER_REGISTRY }}.azurecr.io/myflaskapp:latest \
-            --docker-registry-server-url https://${{ secrets.AZURE_CONTAINER_REGISTRY }}.azurecr.io \
-            --docker-registry-server-user ${{ secrets.AZURE_REGISTRY_USERNAME }} \
-            --docker-registry-server-password ${{ secrets.AZURE_REGISTRY_PASSWORD }}
+            --name "mypython-app" \
+            --resource-group "${{ secrets.AZURE_RESOURCE_GROUP }}" \
+            --docker-custom-image-name "${{ secrets.AZURE_CONTAINER_REGISTRY }}.azurecr.io/myflaskapp:latest" \
+            --docker-registry-server-url "https://${{ secrets.AZURE_CONTAINER_REGISTRY }}.azurecr.io" \
+            --docker-registry-server-user "${{ secrets.AZURE_REGISTRY_USERNAME }}" \
+            --docker-registry-server-password "${{ secrets.AZURE_REGISTRY_PASSWORD }}"
 
       - name: Logout from Azure
         run: az logout
+
 
     
 
