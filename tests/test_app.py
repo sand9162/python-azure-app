@@ -1,5 +1,5 @@
 import unittest
-from app import app  # Ensure your Flask app is properly imported
+from app import app 
 
 class FlaskTestCase(unittest.TestCase):
     def test_homepage(self):
