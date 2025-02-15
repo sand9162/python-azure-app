@@ -51,14 +51,14 @@ jobs:
         run: |
           docker build -t myflaskapp:latest .
           az acr login --name ${{ secrets.AZURE_CONTAINER_REGISTRY }}
-          docker tag myflaskapp:latest ${{ secrets.AZURE_CONTAINER_REGISTRY }}/myflaskapp:latest
-          docker push ${{ secrets.AZURE_CONTAINER_REGISTRY }}/myflaskapp:latest
+          docker tag myflaskapp:latest ${{ secrets.AZURE_CONTAINER_REGISTRY }}.azurecr.io/myflaskapp:latest
+          docker push ${{ secrets.AZURE_CONTAINER_REGISTRY }}.azurecr.io/myflaskapp:latest
 
       - name: Deploy to Azure App Service
         run: |
           az webapp config container set --name ${{ secrets.AZURE_WEBAPP_NAME }} \
             --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
-            --docker-custom-image-name ${{ secrets.AZURE_CONTAINER_REGISTRY }}/myflaskapp:latest
+            --docker-custom-image-name ${{ secrets.AZURE_CONTAINER_REGISTRY }}.azurecr.io/myflaskapp:latest
 
       - name: Logout from Azure
         run: az logout
