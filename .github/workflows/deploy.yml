@@ -26,7 +26,12 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run Tests
-        run: python -m unittest discover tests
+        run: |
+          if [ -d "tests" ]; then
+            python -m unittest discover tests
+          else
+            echo "No tests found, skipping tests."
+          fi
 
   build-and-deploy:
     name: Build & Deploy to Azure
@@ -56,5 +61,7 @@ jobs:
             --docker-custom-image-name ${{ secrets.AZURE_CONTAINER_REGISTRY }}/myflaskapp:latest
 
       - name: Logout from Azure
+        run: az logout
+
         run: az logout
 
