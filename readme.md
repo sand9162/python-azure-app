@@ -41,6 +41,8 @@ cpp
 Copy
 Edit
 http://127.0.0.1:5000
+
+
 🏗️ File/Folder Structure
 css
 Copy
@@ -57,6 +59,9 @@ python-azure-app-main/
 │   └── index.html
 └── tests/
     └── test_app.py
+
+
+
 1. .gitignore
 Lists files and directories to ignore when pushing to GitHub.
 2. Dockerfile
