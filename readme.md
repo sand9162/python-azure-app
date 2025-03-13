@@ -1,5 +1,8 @@
 Python Azure App Documentation
+
+
 📌 Project Overview
+
 This project is a simple Python web application deployed to Microsoft Azure using Docker and GitHub Actions for CI/CD. The app is built using Flask (a lightweight Python framework) and follows a containerized approach for easy deployment.
 
 🚀 Setup Instructions
